@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>US Visa Appointment Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 340px;
+      padding: 15px;
+      margin: 0;
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3367d6;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    #status {
+      margin-top: 10px;
+      color: #666;
+      font-style: italic;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .location-name {
+      font-weight: bold;
+    }
+    .no-data {
+      text-align: center;
+      color: #888;
+      padding: 15px;
+    }
+    .add-location {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .hint {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+      margin-top: 15px;
+    }
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 16px;
+      transition: 0.3s;
+      margin-top: 0;
+    }
+    .tab button:hover {
+      background-color: #ddd;
+    }
+    .tab button.active {
+      background-color: #4285f4;
+      color: white;
+    }
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+    .active-tab {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h2>US Visa Appointment Tracker</h2>
+  
+  <div>
+    <button id="refresh-button">Refresh Data</button>
+    <button id="toggle-table-button">Show/Hide on Page</button>
+  </div>
+  
+  <div id="status">Ready to track appointments</div>
+  
+  <div class="tab">
+    <button class="tablinks active" id="tab-appointments">Appointments</button>
+    <button class="tablinks" id="tab-settings">Settings</button>
+  </div>
+  
+  <div id="appointments-tab" class="tabcontent active-tab">
+    <div id="latest-data">
+      <h3>Latest Appointments</h3>
+      <table id="popup-table">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Next Available</th>
+          </tr>
+        </thead>
+        <tbody id="popup-table-body">
+          <tr>
+            <td colspan="2" class="no-data">No data available</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div id="settings-tab" class="tabcontent">
+    <h3>Add New Location</h3>
+    <div class="hint">Find location ID from the URL when checking availability for that location.</div>
+    <input type="text" id="location-name" placeholder="Location Name (e.g. Vancouver)">
+    <input type="number" id="location-id" placeholder="Location ID (e.g. 89)">
+    <button id="add-location-button">Add Location</button>
+    
+    <h3>Tracked Locations</h3>
+    <div id="tracked-locations">
+      <table id="locations-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="locations-table-body">
+          <!-- Locations will be populated here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
