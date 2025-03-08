@@ -83,4 +83,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## ⚠️ Disclaimer
 
+<<<<<<< HEAD
 This extension is not affiliated with, endorsed by, or connected to the US Department of State or any official visa services. It is simply a tool to help users monitor appointment availability on the official visa website.
+=======
+This extension is not affiliated with, endorsed by, or connected to the US Department of State or any official visa services. It is simply a tool to help users monitor appointment availability on the official visa website.
+>>>>>>> 33ff44c355b8b3a085a0f558c6dc0abf73e45ea1
